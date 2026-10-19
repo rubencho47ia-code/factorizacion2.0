@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casos de factorización · Grado 8</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2233;--mut:#5b6278;--pri:#4f46e5;--ok:#16a34a;--bad:#dc2626;--bd:#dfe3ee;--hl:#eef0ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12141c;--card:#1c1f2b;--tx:#e8eaf3;--mut:#a0a6bd;--pri:#818cf8;--bd:#2d3244;--hl:#262a45}}
+:root[data-theme="dark"]{--bg:#12141c;--card:#1c1f2b;--tx:#e8eaf3;--mut:#a0a6bd;--pri:#818cf8;--bd:#2d3244;--hl:#262a45}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
+header{background:#1e3a8a;color:#fff;padding:14px 16px}
+header h1{margin:0;font-size:1.25rem}header small{opacity:.9}
+.name{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.name input{flex:1;min-width:180px;padding:8px 10px;border-radius:8px;border:0;font-size:1rem}
+nav{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{white-space:nowrap;border:1px solid var(--bd);background:var(--bg);color:var(--tx);padding:8px 14px;border-radius:20px;cursor:pointer;font-size:.95rem}
+nav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+main{max-width:820px;margin:0 auto;padding:16px}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+.card h3{margin:0 0 6px}
+.tip{background:var(--hl);border-left:4px solid var(--pri);padding:8px 12px;border-radius:8px;margin:8px 0}
+.ex{font-family:Georgia,serif;font-size:1.1rem;background:var(--bg);padding:8px 12px;border-radius:8px;overflow-x:auto}
+ol,ul{margin:6px 0;padding-left:22px}
+button.b{background:var(--pri);color:#fff;border:0;padding:9px 16px;border-radius:10px;cursor:pointer;font-size:1rem}
+button.b.s{background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:9px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);cursor:pointer;font-size:1rem}
+.opt:hover{border-color:var(--pri)}
+.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--bad);color:#fff;border-color:var(--bad)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row input{flex:1;min-width:160px;padding:9px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:1rem}
+.fb{margin-top:6px;font-weight:600}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.bar{height:12px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+.big{font-size:2.6rem;font-weight:800;color:var(--pri)}
+.prog{color:var(--mut);font-size:.9rem}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--bd);padding:6px 8px;text-align:left}
+body{font-size:calc(17px*var(--fs,1))}
+body.easy{font-family:Verdana,Tahoma,sans-serif;letter-spacing:.03em;word-spacing:.12em;line-height:1.85}
+.tools{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.tools button{border:0;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:.9rem}
+.cs{border-top:8px solid var(--c)}
+.ico{font-size:2.6rem;line-height:1}
+.hd{display:flex;gap:12px;align-items:center}.hd h3{margin:0;color:var(--c);font-size:1.3rem}
+.stp{list-style:none;padding:0;counter-reset:s}
+.stp li{counter-increment:s;display:flex;gap:10px;align-items:flex-start;margin:8px 0;padding:8px;background:var(--bg);border-radius:10px}
+.stp li:before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--c);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.vis{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font:700 1.15rem Georgia,serif;margin:10px 0;padding:12px;background:var(--bg);border-radius:10px}
+.chip{padding:5px 10px;border-radius:10px;border:2px solid var(--c);background:var(--card)}
+.chip.f{background:var(--c);color:#fff}.chip.g{border-style:dashed}
+.c-fc{--c:#2563eb}.c-ag{--c:#b45309}.c-dc{--c:#dc2626}.c-tcp{--c:#7c3aed}.c-t1{--c:#047857}.c-t2{--c:#db2777}.c-cub{--c:#0e7490}
+.listen{background:var(--c);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:1rem}
+.opt{font-size:1.05rem;padding:12px}.bar i{background:var(--c,var(--pri))}
+#tp{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:var(--hl)}
+#tp button{white-space:nowrap;border:2px solid var(--pri);background:var(--card);color:var(--tx);padding:9px 16px;border-radius:12px;cursor:pointer;font-weight:700;font-size:1rem}
+#tp button.on{background:var(--pri);color:#fff}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 4px}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 6px 2px}.fr>span:last-child{padding:2px 6px 0}
+.c-sm,.c-mc{--c:#2563eb}.c-rs,.c-am{--c:#b45309}.c-sg,.c-mo{--c:#dc2626}.c-sp,.c-bi{--c:#7c3aed}.c-rt,.c-fa{--c:#047857}
+@media print{header .name input{border:1px solid #000}nav,.noprint{display:none}section{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+<h1>🧮 Matemáticas interactivas</h1><small>Grado octavo · elige un apartado</small>
+<div class="name"><label for="nm">Nombre del estudiante:</label><input id="nm" placeholder="Escribe tu nombre completo"></div>
+<div class="tools"><button data-z="-">A−</button><button data-z="+">A+</button><button data-z="easy">🔤 Lectura fácil</button></div>
+</header>
+<div id="tp"></div>
+<nav id="nav"></nav>
+<main>
+<section id="teoria"></section>
+<section id="taller"></section>
+<section id="eval"></section>
+<section id="act"></section>
+<section id="nota"></section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let C={
+fc:{n:"Factor común",tip:"Mira si <b>todos</b> los términos comparten un número o una letra.",st:["Halla el MCD de los coeficientes.","Toma las letras comunes con el <b>menor</b> exponente.","Divide cada término entre ese factor común.","Escribe: factor común × (cocientes)."],ex:"12x³ + 18x² = 6x²(2x + 3)",sug:"Practica hallando el MCD y dividiendo término a término; luego multiplica para comprobar."},
+ag:{n:"Agrupación de términos",tip:"Hay <b>4 términos</b> (o más) y no existe un factor común para todos.",st:["Agrupa de a dos términos que compartan algo.","Saca factor común en cada grupo.","Debe quedar el <b>mismo paréntesis</b> repetido.","Saca ese paréntesis como factor común."],ex:"ax + ay + bx + by = a(x + y) + b(x + y) = (x + y)(a + b)",sug:"Cuida los signos al agrupar: si el grupo empieza con signo negativo, saca el factor con signo negativo."},
+dc:{n:"Diferencia de cuadrados",tip:"<b>Dos términos</b> separados por una <b>resta</b>, y ambos son cuadrados perfectos. (La suma de cuadrados no se factoriza.)",st:["Saca la raíz cuadrada del primer término.","Saca la raíz cuadrada del segundo término.","Escribe (suma)(resta) de las raíces."],ex:"16a² − 25b² = (4a + 5b)(4a − 5b)",sug:"Memoriza los cuadrados perfectos (1, 4, 9, 16, 25…) y recuerda: un factor con + y otro con −."},
+tcp:{n:"Trinomio cuadrado perfecto",tip:"<b>Tres términos</b>: el primero y el último son cuadrados perfectos, y el del medio es el <b>doble producto</b> de sus raíces.",st:["Saca la raíz del primer y del tercer término.","Comprueba que 2 · raíz₁ · raíz₂ = término del medio.","Escribe (raíz₁ ± raíz₂)² con el signo del término del medio."],ex:"9a² − 12a + 4 = (3a − 2)²",sug:"Verifica siempre el doble producto; si no coincide, no es un trinomio cuadrado perfecto."},
+t1:{n:"Trinomio x² + bx + c",tip:"<b>Tres términos</b> y el coeficiente de x² es <b>1</b>.",st:["Busca dos números que <b>multiplicados</b> den c.","Esos mismos números deben <b>sumar</b> b.","Escribe (x + p)(x + q)."],ex:"x² − x − 12 → (−4)(3) = −12 y −4 + 3 = −1 → (x − 4)(x + 3)",sug:"Haz una lista de los pares de factores de c y revisa cuál suma b, cuidando los signos."},
+t2:{n:"Trinomio ax² + bx + c",tip:"<b>Tres términos</b> y el coeficiente de x² es <b>distinto de 1</b>.",st:["Multiplica a · c.","Busca dos números que multiplicados den a·c y sumados den b.","Parte el término central con esos dos números.","Factoriza por agrupación."],ex:"2x² + 7x + 3 → a·c = 6; 1 y 6 suman 7 → 2x² + x + 6x + 3 = x(2x + 1) + 3(2x + 1) = (2x + 1)(x + 3)",sug:"Repasa agrupación de términos y el método de a·c; comprueba multiplicando los dos binomios."},
+cub:{n:"Suma o diferencia de cubos",tip:"<b>Dos términos</b> que son cubos perfectos (1, 8, 27, 64, x³…) unidos por + o −.",st:["Saca la raíz cúbica de cada término (a y b).","Primer factor: (a ± b), con el mismo signo del enunciado.","Segundo factor: a² ∓ ab + b² (signo contrario en el medio y + al final)."],ex:"x³ − 8 = (x − 2)(x² + 2x + 4)",sug:"Aprende la fórmula de memoria y repasa los cubos perfectos (1, 8, 27, 64, 125)."}
+};
+let K=Object.keys(C);
+/* Taller: [caso, expresión, pasos, resultado] */
+let W=[
+["fc","12x³ + 18x²",["MCD de 12 y 18 → 6.","Letra común con menor exponente → x².","Divide: 12x³ ÷ 6x² = 2x y 18x² ÷ 6x² = 3."],"6x²(2x + 3)"],
+["fc","20a³b − 30a²b²",["MCD de 20 y 30 → 10.","Letras comunes: a² y b → a²b.","Divide: 20a³b ÷ 10a²b = 2a y 30a²b² ÷ 10a²b = 3b."],"10a²b(2a − 3b)"],
+["ag","mx + my + 5x + 5y",["Agrupa: (mx + my) + (5x + 5y).","Factor común en cada grupo: m(x + y) + 5(x + y).","Saca (x + y) como factor común."],"(x + y)(m + 5)"],
+["dc","81x² − 4",["√(81x²) = 9x.","√4 = 2.","Escribe (9x + 2)(9x − 2)."],"(9x + 2)(9x − 2)"],
+["tcp","x² + 14x + 49",["√x² = x y √49 = 7.","Doble producto: 2·x·7 = 14x ✔ (coincide).","Signo del medio +, entonces (x + 7)²."],"(x + 7)²"],
+["t1","x² + 3x − 10",["Dos números que multiplicados den −10 y sumados 3.","Prueba: 5 y −2 → 5·(−2) = −10 y 5 + (−2) = 3 ✔.","Escribe (x + 5)(x − 2)."],"(x + 5)(x − 2)"],
+["t2","6x² + 7x + 2",["a·c = 12.","Busca dos números: multiplican 12 y suman 7 → 3 y 4.","Parte: 6x² + 3x + 4x + 2.","Agrupa: 3x(2x + 1) + 2(2x + 1)."],"(2x + 1)(3x + 2)"],
+["cub","8x³ + 1",["Raíces cúbicas: ∛(8x³) = 2x y ∛1 = 1.","Primer factor: (2x + 1).","Segundo: (2x)² − (2x)(1) + 1² = 4x² − 2x + 1."],"(2x + 1)(4x² − 2x + 1)"],
+["dc","2x² − 50 (¡combina casos!)",["Primero factor común: 2(x² − 25).","Dentro del paréntesis hay diferencia de cuadrados: x² − 25 = (x + 5)(x − 5)."],"2(x + 5)(x − 5)"]
+];
+/* Evaluación: [caso, pregunta, opciones, índice correcto] */
+let Q=[
+["fc","Al factorizar 12x³ + 18x², el resultado es:",["6x(2x² + 3)","6x²(2x + 3)","2x²(6x + 9)","6x²(2x + 18)"],1],
+["fc","Factoriza 15a²b − 20ab²:",["5ab(3b − 4a)","5ab(3a + 4b)","5ab(3a − 4b)","5b(3a − 4a²)"],2],
+["fc","El factor común de 8m³n² y 12m²n⁴ es:",["4m²n²","8m²n²","4m³n⁴","2mn"],0],
+["ag","ax + ay + bx + by se factoriza como:",["(a + x)(b + y)","(a + b)(x − y)","(a + b)(x + y)","a(x + y) + b(x − y)"],2],
+["ag","Factoriza 2x + 2y + mx + my:",["(x + y)(2 + m)","(2 + m)(x − y)","(2x + m)(y)","2m(x + y)"],0],
+["ag","Factoriza xy − 2y + 3x − 6:",["(x + 2)(y + 3)","(x − 2)(y − 3)","(x − 2)(y + 3)","(x + 3)(y − 2)"],2],
+["dc","x² − 49 =",["(x − 7)²","(x + 7)(x − 7)","(x + 49)(x − 1)","(x + 7)²"],1],
+["dc","16a² − 25b² =",["(4a + 5b)(4a − 5b)","(8a + 5b)(2a − 5b)","(4a − 5b)²","(16a + 25b)(a − b)"],0],
+["dc","¿Cuál de estas expresiones NO es una diferencia de cuadrados?",["25 − y²","4x² − 1","x² + 9","x² − 9"],2],
+["tcp","x² + 10x + 25 =",["(x + 5)²","(x + 10)(x + 25)","(x − 5)²","(x + 5)(x − 5)"],0],
+["tcp","9a² − 12a + 4 =",["(3a + 2)²","(9a − 4)²","(3a − 2)(3a + 2)","(3a − 2)²"],3],
+["tcp","¿Cuál es un trinomio cuadrado perfecto?",["x² + 6x + 8","x² + 5x + 9","x² + 6x + 9","x² + 6x + 10"],2],
+["t1","x² + 7x + 12 =",["(x + 2)(x + 6)","(x + 3)(x + 4)","(x + 1)(x + 12)","(x − 3)(x − 4)"],1],
+["t1","x² − x − 12 =",["(x − 4)(x + 3)","(x + 4)(x − 3)","(x − 6)(x + 2)","(x − 12)(x + 1)"],0],
+["t1","x² − 8x + 15 =",["(x + 3)(x + 5)","(x − 3)(x + 5)","(x − 3)(x − 5)","(x − 1)(x − 15)"],2],
+["t2","2x² + 7x + 3 =",["(2x + 3)(x + 1)","(2x + 1)(x + 3)","(2x − 1)(x − 3)","(x + 1)(x + 6)"],1],
+["t2","3x² − 5x − 2 =",["(3x + 1)(x − 2)","(3x − 1)(x + 2)","(3x − 2)(x + 1)","(3x + 2)(x − 1)"],0],
+["cub","x³ − 8 =",["(x − 2)(x² − 2x + 4)","(x − 2)(x² + 4x + 4)","(x + 2)(x² − 2x + 4)","(x − 2)(x² + 2x + 4)"],3],
+["cub","a³ + 27 =",["(a + 3)(a² − 3a + 9)","(a + 3)(a² + 3a + 9)","(a − 3)(a² + 3a + 9)","(a + 3)³"],0],
+["dc","Factoriza completamente 3x² − 27:",["3(x − 3)²","(3x + 3)(x − 9)","3(x² − 9)","3(x + 3)(x − 3)"],3]
+];
+/* Ejercicios interactivos: [caso, expresión, respuesta, pista] */
+let A=[
+["fc","4x + 8","4(x+2)","Busca el MCD de 4 y 8."],
+["fc","9a² − 6a","3a(3a-2)","MCD = 3 y la letra a."],
+["fc","10x³y² + 15x²y","5x²y(2xy+3)","Menor exponente de cada letra."],
+["fc","14m² − 21m","7m(2m-3)","MCD de 14 y 21 es 7."],
+["ag","am + an + bm + bn","(m+n)(a+b)","Agrupa (am + an) y (bm + bn)."],
+["ag","x² + xy + 3x + 3y","(x+y)(x+3)","Agrupa x(x + y) + 3(x + y)."],
+["dc","x² − 81","(x+9)(x-9)","√81 = 9."],
+["dc","4m² − 9","(2m+3)(2m-3)","√(4m²) = 2m."],
+["dc","49 − y²","(7+y)(7-y)","Raíces: 7 y y."],
+["dc","25x² − 36y²","(5x+6y)(5x-6y)","Raíces: 5x y 6y."],
+["tcp","x² + 8x + 16","(x+4)^2","2·x·4 = 8x ✔."],
+["tcp","4a² − 20a + 25","(2a-5)^2","Raíces: 2a y 5; el medio es negativo."],
+["tcp","9x² + 30x + 25","(3x+5)^2","Raíces: 3x y 5."],
+["t1","x² + 5x + 6","(x+2)(x+3)","Multiplican 6 y suman 5."],
+["t1","x² + 2x − 15","(x+5)(x-3)","Multiplican −15 y suman 2."],
+["t1","x² − 9x + 20","(x-4)(x-5)","Multiplican 20 y suman −9."],
+["t2","2x² + 5x + 2","(2x+1)(x+2)","a·c = 4; busca dos números que sumen 5."],
+["t2","6x² + 5x + 1","(3x+1)(2x+1)","a·c = 6; los números son 2 y 3."],
+["cub","x³ + 1","(x+1)(x^2-x+1)","a = x, b = 1."],
+["cub","27a³ − 8","(3a-2)(9a^2+6a+4)","a = 3a, b = 2."]
+];
+let R={q:{},a:{}},NF=0,IN='';
+const lbl=n=>{const t=n.toString();return t};
+/* normalización de respuestas */
+function norm(s){
+ s=s.toLowerCase().replace(/[−–—]/g,"-").replace(/²/g,"^2").replace(/³/g,"^3").replace(/[\s*·]/g,"");
+ const toks=s.match(/\([^)]*\)(\^\d)?|[^()]+/g)||[];
+ return toks.map(t=>t.replace(/\(([^)]*)\)/,(m,i)=>{
+   if(!/^[+-]/.test(i))i="+"+i;
+   return "("+i.split(/(?=[+-])/).sort().join("")+")";
+ })).sort().join("|");
+}
+/* NAV */
+const tabs=[["teoria","📖 Teoría"],["taller","✏️ Taller"],["eval","📝 Evaluación"],["act","🎯 Ejercicios"],["nota","🏆 Nota"]];
+$("#nav").innerHTML=tabs.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join("");
+function go(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===id));if(id==="nota")renderNota();window.scrollTo(0,0)}
+$("#nav").onclick=e=>{if(e.target.dataset.t)go(e.target.dataset.t)};
+
+let V={
+fc:["🎒",`<span class="chip">12x³</span>+<span class="chip">18x²</span> ➜ <span class="chip f">6x²</span>(<span class="chip g">2x</span>+<span class="chip g">3</span>)`],
+ag:["🧩",`<span class="chip">ax+ay</span> | <span class="chip">bx+by</span> ➜ (<span class="chip f">x+y</span>)(a+b)`],
+dc:["⬛",`<span class="chip">x²</span> − <span class="chip">49</span> ➜ (<span class="chip f">x</span> + <span class="chip g">7</span>)(<span class="chip f">x</span> − <span class="chip g">7</span>)`],
+tcp:["🪞",`<span class="chip">x²</span> + <span class="chip g">2·x·5</span> + <span class="chip">25</span> ➜ (<span class="chip f">x + 5</span>)²`],
+t1:["🔑",`<span class="chip f">×</span> 12 &nbsp; <span class="chip f">+</span> 7 ➜ 3 y 4 ➜ (x + <span class="chip g">3</span>)(x + <span class="chip g">4</span>)`],
+t2:["✖️",`2 · 3 = <span class="chip f">6</span> ➜ 1 + 6 = 7 ➜ <span class="chip">2x²</span>+<span class="chip g">x</span>+<span class="chip g">6x</span>+<span class="chip">3</span>`],
+cub:["🧊",`<span class="chip">x³</span> − <span class="chip">8</span> ➜ (<span class="chip f">x − 2</span>)(x² + <span class="chip g">2x</span> + <span class="chip g">4</span>)`]};
+/* TEORÍA */
+const IN1=`<div class="card"><h3>🔎 ¿Cómo reconocer el caso? Cuenta los términos</h3>
+<table><tr><th>Términos</th><th>Posibles casos</th></tr>
+<tr><td>2</td><td>Factor común · Diferencia de cuadrados · Suma/diferencia de cubos</td></tr>
+<tr><td>3</td><td>Factor común · Trinomio cuadrado perfecto · x² + bx + c · ax² + bx + c</td></tr>
+<tr><td>4 o más</td><td>Factor común · Agrupación de términos</td></tr></table>
+<div class="tip"><b>Orden recomendado:</b> 1) busca siempre primero un factor común; 2) cuenta los términos; 3) identifica el caso; 4) <b>comprueba multiplicando</b>; 5) revisa si algún factor se puede factorizar de nuevo.</div></div>`;
+function rT(){$("#teoria").innerHTML=IN+K.map((k,i)=>{const c=C[k],v=V[k];return `<div class="card cs c-${k}"><div class="hd"><span class="ico">${v[0]}</span><h3>${i+1}. ${c.n}</h3></div><div class="tip">💡 <b>¿Cómo lo reconozco?</b> ${c.tip}</div><div class="vis">${v[1]}</div><b>Paso a paso:</b><ol class="stp">${c.st.map(s=>`<li><span>${s}</span></li>`).join("")}</ol><div class="ex">📌 ${c.ex}</div><p><button class="listen" data-k="${k}">🔊 Escuchar</button></p></div>`}).join("")}
+$("#teoria").onclick=e=>{const k=e.target.dataset.k;if(!k||!window.speechSynthesis)return;speechSynthesis.cancel();const c=C[k],u=new SpeechSynthesisUtterance([c.n,c.tip,...c.st,c.ex].join(". ").replace(/<[^>]+>/g,""));u.lang="es-CO";u.rate=.85;speechSynthesis.speak(u)};
+
+/* TALLER */
+function rW(){$("#taller").innerHTML=`<div class="card"><h3>✏️ Taller de práctica guiada</h3><p>Intenta resolver cada ejercicio en tu cuaderno y luego descubre la solución <b>un paso a la vez</b>.</p></div>`+
+W.map((w,i)=>`<div class="card cs c-${w[0]}" data-w="${i}"><h3>Ejercicio ${i+1} <span class="prog">· ${C[w[0]].n}</span></h3><div class="ex">Factoriza: ${w[1]}</div><div class="steps"></div><div class="row noprint" style="margin-top:8px"><button class="b">Ver siguiente paso</button></div></div>`).join("")}
+$("#taller").onclick=e=>{
+ if(e.target.tagName!=="BUTTON")return;
+ const card=e.target.closest("[data-w]"),w=W[card.dataset.w],box=card.querySelector(".steps");
+ const n=box.children.length;
+ if(n<w[2].length)box.insertAdjacentHTML("beforeend",`<div class="tip">Paso ${n+1}: ${w[2][n]}</div>`);
+ else if(n===w[2].length){box.insertAdjacentHTML("beforeend",`<div class="ex">✅ Resultado: ${w[3]}</div>`);e.target.disabled=true;e.target.textContent="Completado"}
+};
+
+/* EVALUACIÓN */
+function renderEval(){
+ $("#eval").innerHTML=`<div class="card"><h3>📝 Evaluación · 20 preguntas</h3><p class="prog" id="qp"></p><div class="bar"><i id="qb" style="width:0"></i></div></div>`+
+ Q.map((q,i)=>`<div class="card cs c-${q[0]}" data-q="${i}"><b>${i+1}. ${q[1]}</b>${q[2].map((o,j)=>`<button class="opt" data-j="${j}">${"ABCD"[j]}) ${o}</button>`).join("")}<div class="fb"></div></div>`).join("");
+ updQ();
+}
+function updQ(){const n=Object.keys(R.q).length;$("#qp").textContent=`Respondidas: ${n} de 20`;$("#qb").style.width=n*5+"%"}
+$("#eval").onclick=e=>{
+ const b=e.target.closest(".opt");if(!b)return;
+ const card=b.closest("[data-q]"),i=+card.dataset.q;if(i in R.q)return;
+ const j=+b.dataset.j,ok=j===Q[i][3];R.q[i]=ok;
+ card.querySelectorAll(".opt").forEach((o,k)=>{if(k===Q[i][3])o.classList.add("ok");else if(k===j)o.classList.add("bad")});
+ const fb=card.querySelector(".fb");fb.className="fb "+(ok?"ok":"bad");
+ fb.textContent=ok?"✅ ¡Correcto! 🎉":"💪 Casi. Repasa: "+C[Q[i][0]].n+".";
+ updQ();
+};
+
+/* EJERCICIOS */
+function renderAct(){
+ $("#act").innerHTML=`<div class="card"><h3>🎯 Ejercicios interactivos · 20 actividades</h3><p>Escribe la factorización. Usa <b>^</b> para potencias (ejemplo: x^2). Puedes cambiar el orden de los factores. Cada actividad se califica en tu primer intento.</p><p class="prog" id="ap"></p><div class="bar"><i id="ab" style="width:0"></i></div></div>`+
+ A.map((a,i)=>`<div class="card cs c-${a[0]}" data-a="${i}"><b>${i+1}. Factoriza:</b> <span class="ex">${a[1]}</span> <span class="prog">(${C[a[0]].n})</span><div class="row" style="margin-top:8px"><input placeholder="Tu respuesta" autocomplete="off" autocapitalize="off"><button class="b" data-k="chk">Comprobar</button><button class="b s" data-k="hint">Pista</button></div><div class="fb"></div></div>`).join("");
+ updA();
+}
+function updA(){const n=Object.keys(R.a).length;$("#ap").textContent=`Resueltas: ${n} de 20`;$("#ab").style.width=n*5+"%"}
+function checkA(card){
+ const i=+card.dataset.a,v=card.querySelector("input").value,fb=card.querySelector(".fb");
+ if(!v.trim()){fb.className="fb bad";fb.textContent="Escribe una respuesta.";return}
+ const nf=NF?normF:norm,ok=nf(v)===nf(A[i][2]);
+ if(!(i in R.a))R.a[i]=ok;
+ fb.className="fb "+(ok?"ok":"bad");
+ fb.textContent=ok?"✅ ¡Muy bien! "+A[i][2].replace(/\^2/g,"²").replace(/\^3/g,"³").replace(/-/g,"−"):"❌ Aún no. Revisa la pista e inténtalo de nuevo (no cambia tu primera calificación).";
+ updA();
+}
+$("#act").onclick=e=>{
+ const card=e.target.closest("[data-a]");if(!card||!e.target.dataset.k)return;
+ if(e.target.dataset.k==="chk")checkA(card);
+ else{const fb=card.querySelector(".fb");fb.className="fb";fb.textContent="💡 "+A[+card.dataset.a][3]}
+};
+$("#act").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.tagName==="INPUT")checkA(e.target.closest("[data-a]"))});
+
+/* NOTA */
+function renderNota(){
+ $("#nota").innerHTML=`<div class="card"><h3>🏆 Mi nota</h3><p>Aquí se calcula tu nota con base en la evaluación y los ejercicios interactivos que hayas respondido.</p><button class="b" id="gen">Generar nota y resumen</button></div><div id="res"></div>`;
+ $("#gen").onclick=genNota;
+}
+function genNota(){
+ const name=$("#nm").value.trim();
+ if(!name){alert("Escribe tu nombre en la parte de arriba antes de generar la nota.");$("#nm").focus();return}
+ const nq=Object.keys(R.q).length,na=Object.keys(R.a).length;
+ if(nq+na===0){$("#res").innerHTML=`<div class="card">Aún no has respondido ninguna pregunta ni actividad. Ve a Evaluación o Ejercicios primero.</div>`;return}
+ const okq=Object.values(R.q).filter(Boolean).length,oka=Object.values(R.a).filter(Boolean).length;
+ const pq=okq/20,pa=oka/20;
+ const parts=[];if(nq)parts.push(pq);if(na)parts.push(pa);
+ const nota=Math.round(parts.reduce((s,x)=>s+x,0)/parts.length*50)/10;
+ const lvl=nota>=4.6?"Superior":nota>=4?"Alto":nota>=3?"Básico":"Bajo";
+ const st={};K.forEach(k=>st[k]={t:0,o:0});
+ Object.entries(R.q).forEach(([i,ok])=>{const s=st[Q[i][0]];s.t++;if(ok)s.o++});
+ Object.entries(R.a).forEach(([i,ok])=>{const s=st[A[i][0]];s.t++;if(ok)s.o++});
+ const weak=K.filter(k=>st[k].t&&st[k].o/st[k].t<0.6),strong=K.filter(k=>st[k].t&&st[k].o/st[k].t>=0.8);
+ const pend=[];if(nq<20)pend.push(`${20-nq} pregunta(s) de la evaluación`);if(na<20)pend.push(`${20-na} actividad(es) interactiva(s)`);
+ $("#res").innerHTML=`<div class="card" style="text-align:center"><div class="prog">${name} · ${TP[cur].n} · ${new Date().toLocaleDateString("es-CO")}</div><div class="big">${nota.toFixed(1)}</div><div style="font-size:1.8rem">${"⭐".repeat(Math.round(nota))}${"☆".repeat(5-Math.round(nota))}</div><b>Desempeño ${lvl}</b><p><b>${nota>=4?"¡Excelente trabajo! 🎉":nota>=3?"¡Vas muy bien, sigue así! 💪":"¡Cada intento te hace más fuerte! Repasa con calma 🌱"}</b></p>
+ <p class="prog">Evaluación: ${okq}/20 correctas · Ejercicios: ${oka}/20 acertados</p>${pend.length?`<p class="prog">⚠️ Sin responder: ${pend.join(" y ")}.</p>`:""}</div>
+ <div class="card"><h3>📊 Resultado por caso</h3><table><tr><th>Caso</th><th>Aciertos</th><th style="width:40%">Dominio</th></tr>${K.map(k=>{const s=st[k],p=s.t?Math.round(s.o/s.t*100):0;return `<tr><td>${C[k].n}</td><td>${s.t?s.o+"/"+s.t:"—"}</td><td class="c-${k}"><div class="bar"><i style="width:${p}%"></i></div></td></tr>`}).join("")}</table></div>
+ <div class="card"><h3>🧩 Dificultades observadas</h3>${weak.length?`<ul>${weak.map(k=>`<li><b>${C[k].n}</b>: ${Math.round(st[k].o/st[k].t*100)}% de acierto.</li>`).join("")}</ul>`:`<p>No se observaron dificultades importantes en lo respondido. ¡Buen trabajo!</p>`}${strong.length?`<p>✅ <b>Fortalezas:</b> ${strong.map(k=>C[k].n).join(", ")}.</p>`:""}</div>
+ <div class="card"><h3>💪 Sugerencias para superarlas</h3>${weak.length?`<ul>${weak.map(k=>`<li><b>${C[k].n}:</b> ${C[k].sug} Repasa la sección de Teoría y repite el ejercicio del Taller.</li>`).join("")}</ul>`:`<p>Sigue practicando con expresiones que combinen varios casos.</p>`}<p><b>Recuerda:</b> repasa la teoría, mira el paso a paso y comprueba tu resultado.</p></div>
+ <div class="noprint"><button class="b" onclick="window.print()">🖨️ Imprimir o guardar como PDF</button></div>`;
+}
+let fs=1;$(".tools").onclick=e=>{const k=e.target.dataset.z;if(!k)return;if(k==="easy")document.body.classList.toggle("easy");else{fs=Math.min(1.5,Math.max(.9,fs+(k==="+"?.1:-.1)));document.body.style.setProperty("--fs",fs)}};
+const fr=(n,d)=>`<span class='fr'><span>${n}</span><span>${d}</span></span>`,ch=(t,f)=>`<span class='chip${f?' f':''}'>${t}</span>`;
+function un(t){if(t[0]!=='('||t[t.length-1]!==')')return t;let d=0;for(let i=0;i<t.length;i++){d+=t[i]==='('?1:t[i]===')'?-1:0;if(d===0&&i<t.length-1)return t}return t.slice(1,-1)}
+const N=t=>{t=un(t);return t.includes('(')?norm(t):norm('('+t+')')};
+function normF(s){s=s.toLowerCase().replace(/[−–—]/g,'-').replace(/²/g,'^2').replace(/[\s*·]/g,'');let d=0,p=-1;for(let i=0;i<s.length;i++){const c=s[i];d+=c==='('?1:c===')'?-1:0;if(c==='/'&&d===0){p=i;break}}return p<0?N(s):N(s.slice(0,p))+'/'+N(s.slice(p+1))}
+const IN2=`<div class='card'><h3>🔎 Recuerda</h3><div class='tip'>Con el <b>mismo denominador</b> se suman o restan solo los <b>numeradores</b>. Al final, ¡factoriza y simplifica! Escribe las fracciones así: (x+1)/(x-2)</div></div>`;
+const IN3=`<div class='card'><h3>🔎 Recuerda</h3><div class='tip'>Con <b>diferente denominador</b>: 1) halla el mcm, 2) amplifica cada fracción, 3) suma o resta numeradores, 4) simplifica. Escribe las fracciones así: (x+1)/((x-2)(x+3))</div></div>`;
+const C2={
+sm:{n:'Suma con igual denominador',tip:'Las fracciones tienen el <b>mismo denominador</b> y se suman (+).',st:['Deja el denominador igual.','Suma los numeradores.','Reduce términos semejantes.'],ex:'2x/(x+1) + 3/(x+1) = (2x + 3)/(x + 1)',sug:'El denominador NO se suma: solo se suman los numeradores.'},
+rs:{n:'Resta con igual denominador',tip:'Mismo denominador y hay una resta (−).',st:['Deja el denominador igual.','Resta los numeradores.','Reduce términos semejantes.'],ex:'5x/(x+2) − 2x/(x+2) = 3x/(x+2)',sug:'Resta solo los numeradores y deja el denominador igual.'},
+sg:{n:'Resta con signo negativo delante',tip:'Después del signo − hay un numerador con <b>2 o más términos</b>. ¡Cuidado con los signos!',st:['Escribe el numerador que resta entre paréntesis.','Cambia el signo de <b>cada</b> término del paréntesis.','Reduce términos semejantes.'],ex:'(5x+1)/(x−2) − (2x−3)/(x−2) = (5x + 1 − 2x + 3)/(x−2) = (3x + 4)/(x−2)',sug:'Usa paréntesis y cambia el signo de TODOS los términos que van después del menos.'},
+sp:{n:'Simplificar el resultado',tip:'Al final mira si numerador y denominador tienen un <b>factor igual</b>.',st:['Factoriza numerador y denominador.','Tacha los factores iguales.','Escribe lo que queda.'],ex:'(2x + 4)/(x + 2) = 2(x + 2)/(x + 2) = 2',sug:'Repasa factorización. Solo se tachan factores, nunca términos sueltos.'},
+rt:{n:'Valores prohibidos',tip:'El denominador <b>nunca</b> puede valer 0.',st:['Iguala el denominador a 0.','Despeja x.','Ese valor está prohibido.'],ex:'x − 5 = 0 → x = 5, por eso x ≠ 5',sug:'Iguala el denominador a cero y despeja con calma.'}};
+const V2={
+sm:['➕',fr('2x','x+1')+' + '+fr('3','x+1')+' ➜ '+fr(ch('2x')+'+'+ch('3'),ch('x+1',1))],
+rs:['➖',fr('5x','x+2')+' − '+fr('2x','x+2')+' ➜ '+fr(ch('3x'),ch('x+2',1))],
+sg:['🔄',fr('5x+1','x−2')+' − '+fr('(2x−3)','x−2')+' ➜ '+fr('5x+1'+ch('−2x+3',1),'x−2')],
+sp:['✂️',fr('2'+ch('(x+2)',1),ch('(x+2)',1))+' = 2'],
+rt:['🚫','x − 5 = 0 ➜ x = 5 ➜ '+ch('x ≠ 5',1)]};
+const W2=[
+['sm','3x/(x+4) + 5/(x+4)',['Denominador igual: x + 4.','Suma numeradores: 3x + 5.'],'(3x + 5)/(x + 4)'],
+['rs','7a/(a−1) − 2a/(a−1)',['Denominador igual: a − 1.','Resta: 7a − 2a = 5a.'],'5a/(a − 1)'],
+['sg','(4x+3)/(x+1) − (x−2)/(x+1)',['Paréntesis: 4x + 3 − (x − 2).','Cambia signos: 4x + 3 − x + 2.','Reduce: 3x + 5.'],'(3x + 5)/(x + 1)'],
+['sg','(x²+2x)/(x+3) − (x²−x)/(x+3)',['Paréntesis: x² + 2x − (x² − x).','Cambia signos: x² + 2x − x² + x.','Reduce: 3x.'],'3x/(x + 3)'],
+['sp','(x+4)/(x+2) + x/(x+2)',['Suma: x + 4 + x = 2x + 4.','Factoriza: 2(x + 2).','Tacha (x + 2).'],'2'],
+['rt','3/(x−4) + x/(x−4): ¿qué valor no puede tomar x?',['Iguala el denominador a 0: x − 4 = 0.','Despeja: x = 4.'],'x ≠ 4']];
+const Q2=[
+['sm','3/x + 4/x =',['7/x','7/(2x)','12/x','7/x²'],0],
+['sm','2x/(x+1) + 3/(x+1) =',['5x/(x+1)','(2x+3)/(x+1)','(2x+3)/(2x+2)','(2x+3)/(x+1)²'],1],
+['sm','(a+2)/(a−3) + (a−1)/(a−3) =',['(2a+1)/(a−3)','(2a+1)/(2a−6)','(2a+3)/(a−3)','(a²+1)/(a−3)'],0],
+['sm','Para sumar fracciones con igual denominador:',['se suman numeradores y denominadores','se suman los numeradores y se deja el denominador','se multiplican los denominadores','se restan los denominadores'],1],
+['rs','5x/(x+2) − 2x/(x+2) =',['3x/(x+2)','3x/0','7x/(x+2)','3/(x+2)'],0],
+['rs','9/y − 4/y =',['5/y','5/(2y)','13/y','5/y²'],0],
+['rs','7m/(m−1) − 3m/(m−1) =',['10m/(m−1)','4m/(m−1)','4m/(m−1)²','4/(m−1)'],1],
+['rs','(4x−1)/(x+5) − 0/(x+5) =',['(4x−1)/(x+5)','(4x+1)/(x+5)','(8x−1)/(x+5)','(4x−1)/(x−5)'],0],
+['sg','(4x+3)/(x+1) − (x−2)/(x+1) =',['(3x+1)/(x+1)','(3x+5)/(x+1)','(5x+1)/(x+1)','(3x+5)/(x−1)'],1],
+['sg','Al restar (x − 2) el numerador queda:',['− x − 2','− x + 2','+ x − 2','− x² + 2'],1],
+['sg','(5x+1)/(x−2) − (2x−3)/(x−2) =',['(3x−2)/(x−2)','(3x+4)/(x−2)','(7x−2)/(x−2)','(3x+4)/(x+2)'],1],
+['sg','3a/(a+1) − (a−4)/(a+1) =',['(2a−4)/(a+1)','(4a−4)/(a+1)','(2a+4)/(a+1)','(2a+4)/(a−1)'],2],
+['sg','(x²+3x)/(x−1) − (x²−x)/(x−1) =',['4x/(x−1)','2x/(x−1)','(4x+2x²)/(x−1)','4/(x−1)'],0],
+['sp','(2x+4)/(x+2) se simplifica a:',['x','2x','2','1/2'],2],
+['sp','(x+4)/(x+2) + x/(x+2) se simplifica a:',['2x+4','2','x+2','1'],1],
+['sp','(x²−4)/(x−2) =',['x−2','x+2','x²+2','1'],1],
+['sp','Para simplificar una fracción algebraica primero:',['tachas términos parecidos','factorizas numerador y denominador','sumas todo','multiplicas en cruz'],1],
+['rt','En 3/(x−4), x no puede valer:',['−4','0','4','3'],2],
+['rt','En 5/(x+7), x no puede valer:',['7','−7','5','0'],1],
+['rt','¿Por qué el denominador no puede ser 0?',['Porque no se puede dividir entre cero','Porque queda negativo','Porque el numerador cambia','Porque se simplifica'],0]];
+const A2=[
+['sm','3/x + 4/x','7/x','Suma 3 + 4.'],
+['sm','2x/(x+1) + 5/(x+1)','(2x+5)/(x+1)','Suma solo los numeradores.'],
+['sm','(a+1)/(a−2) + (a+3)/(a−2)','(2a+4)/(a-2)','a + 1 + a + 3.'],
+['sm','3m/(m+4) + 2m/(m+4)','5m/(m+4)','3m + 2m.'],
+['rs','9/y − 4/y','5/y','Resta 9 − 4.'],
+['rs','8x/(x+3) − 3x/(x+3)','5x/(x+3)','8x − 3x.'],
+['rs','7a/(a−1) − 2a/(a−1)','5a/(a-1)','7a − 2a.'],
+['rs','(6x+5)/(x+2) − x/(x+2)','(5x+5)/(x+2)','6x − x.'],
+['sg','(4x+3)/(x+1) − (x−2)/(x+1)','(3x+5)/(x+1)','4x + 3 − x + 2.'],
+['sg','(5x+1)/(x−2) − (2x−3)/(x−2)','(3x+4)/(x-2)','5x + 1 − 2x + 3.'],
+['sg','3a/(a+1) − (a−4)/(a+1)','(2a+4)/(a+1)','3a − a + 4.'],
+['sg','(x²+3x)/(x−1) − (x²−x)/(x−1)','4x/(x-1)','x² se cancela; 3x + x.'],
+['sg','(2m+5)/(m+3) − (m+1)/(m+3)','(m+4)/(m+3)','2m + 5 − m − 1.'],
+['sp','Simplifica: (x+4)/(x+2) + x/(x+2)','2','Suma y factoriza 2(x+2).'],
+['sp','Simplifica: (3x+6)/(x+2)','3','Factor común 3.'],
+['sp','Simplifica: (x²−4)/(x−2)','x+2','Diferencia de cuadrados.'],
+['sp','Simplifica: (5x+5)/(x+1)','5','Factor común 5.'],
+['rt','3/(x−6): x no puede valer (escribe solo el número)','6','Iguala x − 6 a 0.'],
+['rt','7/(x+2): x no puede valer (solo el número)','-2','Iguala x + 2 a 0.'],
+['rt','5/(2x−8): x no puede valer (solo el número)','4','2x − 8 = 0.']];
+const C3={
+mc:{n:'Hallar el mcm',tip:'Los denominadores son <b>diferentes</b>: primero busca un denominador común.',st:['Halla el mcm de los números.','Toma cada letra con el <b>mayor</b> exponente.','Ese es el denominador común.'],ex:'mcm de 2x y 3x² → 6x²',sug:'Repasa el mcm: números primero, letras con el mayor exponente.'},
+am:{n:'Amplificar la fracción',tip:'Ya tienes el mcm y debes escribir cada fracción con ese denominador.',st:['Divide el mcm entre el denominador de la fracción.','Multiplica el numerador por ese resultado.','Escribe la nueva fracción con el mcm.'],ex:'5/x con mcm x² → 5·x / x² = 5x/x²',sug:'Divide el mcm entre el denominador viejo y multiplica el numerador por ese resultado.'},
+mo:{n:'Denominadores monomios',tip:'Los denominadores son monomios como x, 2x o x².',st:['Halla el mcm.','Amplifica cada fracción.','Suma o resta los numeradores.','Simplifica si se puede.'],ex:'1/x + 2/x² = x/x² + 2/x² = (x + 2)/x²',sug:'Amplifica con calma, una fracción a la vez, y luego suma numeradores.'},
+bi:{n:'Denominadores binomios',tip:'Los denominadores son binomios distintos como (x+1) y (x−1); el mcm es su <b>producto</b>.',st:['El mcm es (x+1)(x−1).','Multiplica cada numerador por el binomio que le falta.','Suma o resta (¡cuidado con el signo −!).','Reduce términos semejantes.'],ex:'1/(x+1) + 2/(x−1) = (x − 1 + 2x + 2)/((x+1)(x−1)) = (3x + 1)/((x+1)(x−1))',sug:'Multiplica cada numerador por el binomio que le falta y usa paréntesis en la resta.'},
+fa:{n:'Factorizando denominadores',tip:'Un denominador como <b>x² − 1</b> se factoriza (diferencia de cuadrados) antes de buscar el mcm.',st:['Factoriza cada denominador.','El mcm usa cada factor una sola vez.','Amplifica, suma o resta y simplifica.'],ex:'1/(x²−1) + 1/(x+1) = (1 + x − 1)/((x+1)(x−1)) = x/((x+1)(x−1))',sug:'Repasa la diferencia de cuadrados y el apartado de factorización.'}};
+const V3={
+mc:['🧮','mcm(2, 3) = '+ch('6',1)+' · x² ➜ '+ch('6x²',1)],
+am:['🔁',fr('5','x')+' × '+fr('x','x')+' = '+fr('5'+ch('x',1),'x²')],
+mo:['🧱',fr('1','x')+' + '+fr('2','x²')+' = '+fr('x + 2','x²')],
+bi:['⚖️','mcm = '+ch('(x+1)',1)+ch('(x−1)',1)],
+fa:['🪓','x² − 1 ➜ '+ch('(x+1)(x−1)',1)]};
+const W3=[
+['mc','mcm de 4x y 6x²',['mcm de 4 y 6 → 12.','Letra con mayor exponente → x².','Unimos: 12x².'],'12x²'],
+['am','3/x con denominador x²',['x² ÷ x = x.','Multiplica el numerador: 3·x = 3x.'],'3x/x²'],
+['mo','1/x + 2/x²',['mcm = x².','1/x → x/x².','Suma: x + 2.'],'(x + 2)/x²'],
+['mo','3/(2x) − 1/x',['mcm = 2x.','1/x → 2/(2x).','Resta: 3 − 2 = 1.'],'1/(2x)'],
+['bi','1/(x+1) + 2/(x−1)',['mcm = (x+1)(x−1).','Numeradores: 1·(x−1) y 2·(x+1).','Suma: x − 1 + 2x + 2 = 3x + 1.'],'(3x + 1)/((x+1)(x−1))'],
+['fa','1/(x²−1) + 1/(x+1)',['x² − 1 = (x+1)(x−1).','mcm = (x+1)(x−1).','Numeradores: 1 y (x − 1).','Suma: 1 + x − 1 = x.'],'x/((x+1)(x−1))']];
+const Q3=[
+['mc','El mcm de 2x y 3x² es:',['6x²','5x³','6x','x²'],0],
+['mc','El mcm de 4a y 6b es:',['24ab','12ab','10ab','6ab'],1],
+['mc','El mcm de (x+1) y (x−1) es:',['x²','(x+1)+(x−1)','(x+1)(x−1)','x+1'],2],
+['mc','Para el mcm, cada letra se toma con el exponente:',['menor','mayor','cero','cualquiera'],1],
+['am','3/x escrita con denominador x² es:',['3x/x²','3/x²','3x²/x²','x/x²'],0],
+['am','5/(2a) con denominador 6a es:',['5/(6a)','15/(6a)','10/(6a)','5a/(6a)'],1],
+['am','Para amplificar se multiplica el numerador por:',['el mcm completo','el denominador viejo','el resultado de dividir el mcm entre su denominador','el numerador de la otra'],2],
+['am','2/(x−1) con denominador (x−1)(x+1) tiene numerador:',['2','2(x−1)','x+1','2(x+1)'],3],
+['mo','1/x + 2/x² =',['3/x³','(x+2)/x²','3/x²','(x+2)/x'],1],
+['mo','3/(2x) − 1/x =',['2/x','1/(2x)','2/(2x)','1/x'],1],
+['mo','2/a + 3/a² =',['5/a³','(2a+3)/a²','5/a²','(2a+3)/a'],1],
+['mo','5/(3x) + 1/(6x) =',['6/(9x)','11/(6x)','6/(6x)','11/(18x)'],1],
+['bi','1/(x+1) + 2/(x−1) =',['3/(x²−1)','(3x+1)/((x+1)(x−1))','(3x−1)/((x+1)(x−1))','(x+1)/((x+1)(x−1))'],1],
+['bi','1/(x−2) − 1/(x+2) =',['0','4/((x−2)(x+2))','2x/((x−2)(x+2))','4/(x²+4)'],1],
+['bi','2/(x+3) + 1/(x−3) =',['3/(2x)','(3x−3)/((x+3)(x−3))','(3x+3)/((x+3)(x−3))','(3x−3)/(x+3)'],1],
+['bi','Al restar fracciones con binomios, el numerador que resta se escribe:',['sin paréntesis','entre paréntesis cambiando los signos','al revés','igual que en la suma'],1],
+['fa','x² − 1 se factoriza como:',['(x−1)²','(x+1)(x−1)','(x+1)²','x(x−1)'],1],
+['fa','1/(x²−1) + 1/(x+1) =',['x/((x+1)(x−1))','2/(x²−1)','1/(x−1)','(x+2)/(x²−1)'],0],
+['fa','El mcm de (x²−4) y (x+2) es:',['x+2','(x−2)(x+2)','(x²−4)(x+2)','x−2'],1],
+['fa','1/(x−3) − 6/(x²−9) =',['1/(x+3)','1/(x−3)','−5/(x²−9)','(x+9)/(x²−9)'],0]];
+const A3=[
+['mc','mcm de 2x y 4x²','4x^2','mcm de 2 y 4 es 4.'],
+['mc','mcm de 3a y 6b','6ab','Números: 6. Letras: a y b.'],
+['mc','mcm de 5x²y y 10xy²','10x^2y^2','Mayor exponente de cada letra.'],
+['mc','mcm de (x+2) y (x−2)','(x+2)(x-2)','Es el producto.'],
+['am','5/x con denominador x² (escribe la fracción)','5x/x^2','x² ÷ x = x.'],
+['am','3/(2a) con denominador 6a (escribe la fracción)','9/(6a)','6a ÷ 2a = 3.'],
+['am','2/(x+1) con denominador (x+1)(x−1)','2(x-1)/((x+1)(x-1))','Multiplica por lo que falta: (x−1).'],
+['am','4/(x−2) con denominador (x−2)(x+3)','4(x+3)/((x-2)(x+3))','Multiplica por (x+3).'],
+['mo','1/x + 2/x²','(x+2)/x^2','mcm = x².'],
+['mo','3/(2x) − 1/x','1/(2x)','mcm = 2x.'],
+['mo','2/a + 3/a²','(2a+3)/a^2','mcm = a².'],
+['mo','5/(3x) + 1/(6x)','11/(6x)','mcm = 6x; 5/(3x) = 10/(6x).'],
+['bi','1/(x+1) + 2/(x−1)','(3x+1)/((x+1)(x-1))','1(x−1) + 2(x+1).'],
+['bi','1/(x−2) − 1/(x+2)','4/((x-2)(x+2))','(x+2) − (x−2).'],
+['bi','2/(x+3) + 1/(x−3)','(3x-3)/((x+3)(x-3))','2(x−3) + 1(x+3).'],
+['bi','3/(x+1) − 2/(x−1)','(x-5)/((x+1)(x-1))','3(x−1) − 2(x+1).'],
+['fa','Factoriza el denominador x² − 9','(x+3)(x-3)','Diferencia de cuadrados.'],
+['fa','1/(x²−1) + 1/(x+1)','x/((x+1)(x-1))','Amplifica la segunda por (x−1).'],
+['fa','1/(x−3) − 6/(x²−9)','1/(x+3)','Numerador: x + 3 − 6 = x − 3; simplifica.'],
+['fa','2/(x²−4) + 1/(x−2)','(x+4)/((x-2)(x+2))','Amplifica la segunda por (x+2).']];
+const TP=[{n:'Casos de factorización',ic:'🧮',C,W,Q,A,V,R,NF:0,IN:IN1},{n:'Fracciones: igual denominador',ic:'➗',C:C2,W:W2,Q:Q2,A:A2,V:V2,R:{q:{},a:{}},NF:1,IN:IN2},{n:'Fracciones: diferente denominador',ic:'🔀',C:C3,W:W3,Q:Q3,A:A3,V:V3,R:{q:{},a:{}},NF:1,IN:IN3}];
+let cur=0;
+function setTopic(i){cur=i;({C,W,Q,A,V,R,NF,IN}=TP[i]);K=Object.keys(C);$('#tp').innerHTML=TP.map((t,j)=>`<button data-i='${j}' class='${j===i?'on':''}'>${t.ic} ${t.n}</button>`).join('');rT();rW();renderEval();renderAct();go('teoria')}
+$('#tp').onclick=e=>{const b=e.target.closest('button');if(b)setTopic(+b.dataset.i)};
+setTopic(0);
+</script>
+</body>
+</html>
